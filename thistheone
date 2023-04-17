@@ -1,0 +1,12 @@
+#Define local account name
+$accountName = "eqd12"
+
+#Get password last set time for specific local account
+$passwordLastSet = (Get-LocalUser -Name $accountName).$passwordLastSet
+
+#Make password last set time readable
+$passwordLastSetTime = [datetime]::FromFileTime($passwordLastSet)
+$passwordLastSetTimeFormatted = $passwordLastSetTime.ToString("yyyy-MM-dd HH:mm:ss")
+
+#Output baybeee
+Write-Output "Password last set for account is '$accountName': $passwordLastSetTimeFormatted"
